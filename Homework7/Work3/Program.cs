@@ -37,3 +37,4 @@ int rows = ReadInt("Введите количество строк:");
 int cols = ReadInt("Введите количество столбцов:");
 int[,] matrix = FillMatrix(rows, cols, 0, 9);
 PrintMatrix(matrix);
+
