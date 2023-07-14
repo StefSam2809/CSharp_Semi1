@@ -1,40 +1,39 @@
-﻿int ReadInt(string text)
-{
-    System.Console.Write(text);
-    return Convert.ToInt32(Console.ReadLine());
-}
+﻿Console.Write("Введите размерность m массива: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите размерность n массива: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int[,] randomArray = new int[m, n];
 
-int[,] FillMatrix(int row, int col, int LeftRange, int RightRange)
+void mas(int m, int n)
 {
-    int[,] TempMatrix = new int[row, col];
+    int i, j;
     Random rand = new Random();
-
-    for(int i = 0; i < TempMatrix.GetLength(0); i++)
+    for (i = 0; i < m; i++)
     {
-        for(int j = 0; j < TempMatrix.GetLength(1); j++)
+        Console.WriteLine();
+        for (j = 0; j < n; j++)
         {
-            TempMatrix[i, j] = rand.Next(LeftRange, RightRange + 1);
-        }
-    }
-    return TempMatrix;
+            randomArray[i, j] = rand.Next(1, 9);
+            Console.Write($"{ randomArray[i, j]} ");
+}
+Console.WriteLine();
+}
 }
 
-void PrintMatrix(int[,] MatrixForPrint)
+void arif(int m, int n)
 {
-    for(int i = 0; i < MatrixForPrint.GetLength(0); i++)
+    Console.Write("Среднее арифметическое каждого столбца: ");
+    int i, j;
+    Random rand = new Random();
+    for (j = 0; j < n; j++)
     {
-        for(int j = 0; j < MatrixForPrint.GetLength(1); j++)
+        double sum = 0;
+        for (i = 0; i < m; i++)
         {
-            System.Console.Write(MatrixForPrint[i, j] + "\t");
+            sum = sum + randomArray[i, j];
         }
-        System.Console.WriteLine();
-    }
+        Console.Write($"{ sum / (i)}; ");
 }
-
-// -----------
-
-int rows = ReadInt("Введите количество строк:");
-int cols = ReadInt("Введите количество столбцов:");
-int[,] matrix = FillMatrix(rows, cols, 0, 9);
-PrintMatrix(matrix);
-
+}
+mas(m, n);
+arif(m, n);
